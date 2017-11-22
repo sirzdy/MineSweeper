@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Mine Sweeper</title>
+</head>
+<body style="text-align:center;margin:10px auto;">
+<div>
+    <canvas id="canvas" width="500" height="500"
+            style="border: 5px solid gray;/*margin:10px;padding: 10px;*/background: lightcyan;"></canvas>
+    <p>
+        <input id="set" type="radio" onclick="setMine(true)" name="mine">标记
+        <input id="open" type="radio" checked=true onclick="setMine(false)" name="mine">探索
+    </p>
+    <p>
+        设置难度：<input id="level" type="range" max="20" min="5" value="10" onchange="changeLevel(this.value)"><br>
+        设置雷的个数：<input id="count" type="range" min="1" max="100" value="10" onchange="changeCount(this.value)"><br>
+        当前难度<span id="levelMes">10*10</span>
+        地雷个数<span id="countMes">10</span>
+    </p>
+    <p>
+        游戏规则：扫雷就是要把所有非地雷的格子揭开即胜利（雷区需要插旗子标记）；踩到地雷格子就算失败。<br>
+        操作说明：<b>标记</b>模式下点击方块用于插旗子或者移除旗子，<b>探索</b>模式下点击方块用于查看当前单位内容。
+        <br>（PC端鼠标右键是探索模式）
+    </p>
+</div>
+
+<div id="mask"
+     style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;display:none;opacity:1;background: gray;">
+    <div style="position: absolute;left: 50%;top: 50%;transform: translateX(-50%) translateY(-50%);">
+        <canvas id="result" style="background: lightcyan;border: 5px solid #EAEAEA;display: none;"></canvas>
+        <div id="mes"></div>
+        <button onclick="start()">重新开始</button>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/MineSweeper.js"></script>
+</body>
+</html>
